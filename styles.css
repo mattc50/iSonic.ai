@@ -10,54 +10,32 @@
 }
 
 body {
-  /* background: linear-gradient(180deg, #1e1b21 55%, #2d1835 100%); */
   background: radial-gradient(100.2% 130.8% at 97.34% 96.33%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(0deg, #67B0F4 0%, #2F71F3 100%);
   overflow: hidden;
   margin: 0;
   height: 100vh;
-  /* height: 100%; */
   width: 100vw;
-  /* width: 100%; */
-  /* position: relative; */
 }
 
 .iframe {
-
   z-index: 2147483000;
-  /* z-index: 1000; */
   position: absolute;
   bottom: 24px;
   right: 24px;
   height: 60px;
   width: 60px;
 
-  /* width: 390px;
-  height: calc(100% - 84px);
-  max-height: 784px; */
-
   border: var(--widget-border);
-  /* box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.25); */
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.25));
   -webkit-filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.25));
   backdrop-filter: blur(60px);
   -webkit-backdrop-filter: blur(60px);
-  /* pointer-events: none; */
 
-  /* border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.15);
-  transform-origin: right bottom;
-  scale: 0;
-  transition: 0.2s;
-  visibility: hidden; */
   transition: 0.2s;
   border-radius: 30px;
 }
 
 .iframe-show {
-  /* scale: 1;
-  visibility: visible; */
-  /* height: calc(100% - 84px); */
   height: calc(100% - 48px);
   width: 390px;
   max-height: 784px;
@@ -68,7 +46,6 @@ body {
 .content-container {
   padding-top: 80px;
   padding-inline: 40px;
-  /*   width: calc(100% - 80px); */
   width: 100%;
 }
 
@@ -128,16 +105,12 @@ body {
 }
 
 .ellipse {
-  /*   width: 1920px; */
   width: 100vw;
   position: absolute;
   bottom: 0;
   transform: translateY(50%);
-  /* transform: translateY(100%); */
-  /* height: 95px; */
   flex-shrink: 0;
   aspect-ratio: 1920 / 95;
-  /*   border-radius: 1920px; */
   border-radius: 50%;
   background: #141215;
   box-shadow: 0px 0px 16px 0px rgba(230, 157, 125, 0.25),
@@ -152,10 +125,6 @@ body {
     padding-inline: 16px;
   }
 
-  /* .iframe {
-    bottom: 0;
-    right: 0;
-  } */
   .content h1 {
     font-size: 48px;
   }

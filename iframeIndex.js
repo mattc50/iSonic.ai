@@ -1,12 +1,14 @@
-// document.style.height = window.innerHeight - 48 + "px";
-
+// dictates state of current page, & what content should be shown
 let state = "menu";
 
+// dictates open state of widget (true => open, false => closed)
 let OPEN = false;
 
+// initializes the date and current day for the Calendar content
 let DATE = new Date(Date.now());
 let DAY = DATE.getDate();
 
+// sample data for available consult timeslots
 const times = [
   { time: "9:00 AM", selected: false },
   { time: "10:00 AM", selected: false },
@@ -20,23 +22,21 @@ const times = [
   { time: "6:00 PM", selected: false },
 ];
 
-// const iframe = document.getElementById("iframe");
-
-// const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-// const body = iframeDoc.body;
-
-
-// const parentDocument = window.parent.document;
+// gets parent window of iframe (the page it is embedded in)
 const parent = window.parent;
-// const body = parent.body;
+
+// gets the body of the iframe document (where content will be added)
 const body = document.body;
-console.log(parent.innerHeight)
-// body.style.height = parent.innerHeight + "px";
+
+// gets iframe element from parent document
 const iframe = parent.document.getElementById('iframe');
 
-// parent.addEventListener("resize", () => body.style.height = parent.innerHeight + "px");
 
+
+/* code for toggle button (when widget is closed)
+   open is passed as a prop, which determines whether the widget is open or
+   not, and ensures that the toggle button is rendered properly.
+*/
 const toggleHTML = (open) => `
   <button class="toggle-widget${open ? " toggle-hide" : ""}" id="toggle-widget" onclick="openWidget()">
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -48,6 +48,7 @@ const toggleHTML = (open) => `
   </button>
 `
 
+// code for menu (initial page) of widget
 const menuHTML = `
   <div class="menu-content-container">
     <div class="widget-header">
@@ -114,6 +115,7 @@ const menuHTML = `
   </div>
 `;
 
+// code for Chat page of widget
 const chatHTML = `
   <div class="chat-content-container" id="chat-content-container">
       <div class="widget-header">
@@ -196,6 +198,7 @@ const chatHTML = `
   </dialog>
 `;
 
+// code for Name & Email entry page of Consult flow
 const consultHTML = `
   <div class="consult-content-container">
     <div class="widget-header">
@@ -231,6 +234,7 @@ const consultHTML = `
 
 `;
 
+// code for Calendar page of Consult flow
 const calendarHTML = `
   <div class="calendar-content-container">
     <div class="widget-header">
@@ -311,6 +315,7 @@ const calendarHTML = `
   </div>
 `;
 
+// code for Message page of widget
 const messageHTML = `
   <div class="message-content-container">
     <div class="widget-header">
@@ -349,22 +354,19 @@ const messageHTML = `
   </div>
 `;
 
+/* this is run inside the show functions for each page, which are triggered
+   when the navigation buttons for each page are clicked on.
+   OPEN is used to render the main-container and toggle button properly.
+*/
 const showContent = (page) => {
   if (page === "menu") {
-    //   iframe.onload = () => {
-
     body.innerHTML = `
       <div class="main-container${OPEN ? " iframe-show" : ""}" id="main-container">
         ${menuHTML}
       </div>
       ${toggleHTML(OPEN)}
     `
-    // body.innerHTML = menuHTML;
-
-    //   document.src = "about:blank";
-    //   };
   }
-
   if (page === "chat") {
     body.innerHTML = `
       <div class="main-container${OPEN ? " iframe-show" : ""}" id="main-container">
@@ -373,7 +375,6 @@ const showContent = (page) => {
       ${toggleHTML(OPEN)}
     `
   }
-
   if (page === "consult") {
     body.innerHTML = `
       <div class="main-container${OPEN ? " iframe-show" : ""}" id="main-container">
@@ -382,7 +383,6 @@ const showContent = (page) => {
       ${toggleHTML(OPEN)}
     `
   }
-
   if (page === "calendar") {
     body.innerHTML = `
       <div class="main-container${OPEN ? " iframe-show" : ""}" id="main-container">
@@ -391,7 +391,6 @@ const showContent = (page) => {
       ${toggleHTML(OPEN)}
     `
   }
-
   if (page === "message") {
     body.innerHTML = `
       <div class="main-container${OPEN ? " iframe-show" : ""}" id="main-container">
@@ -402,45 +401,39 @@ const showContent = (page) => {
   }
 };
 
+/* opens widget.
+   style classes are checked and added/removed if needed to ensure that if
+   manipulated on the frontend, functionality won't change.
+*/
 const openWidget = () => {
   const mainContainer = document.getElementById("main-container");
   if (!mainContainer.classList.contains('iframe-show')) mainContainer.classList.add("iframe-show");
+
   const toggle = document.getElementById("toggle-widget");
   toggle.classList.add("toggle-hide");
-  // iframe.style.height = parent.innerHeight - 84 + "px"
-  // iframe.style.width = "390px"
-  // iframe.style.maxHeight = "784px"
   OPEN = true;
   iframe.classList.add("iframe-show")
 }
 
+// closes widget.
+// style classes are checked and added/removed if needed to ensure that if
+// manipulated on the frontend, functionality won't change.
 const closeWidget = () => {
   const mainContainer = document.getElementById("main-container");
   const style = window.getComputedStyle(mainContainer);
   const scaleStatus = style.getPropertyValue('scale');
   if (scaleStatus == 'none') {
     mainContainer.classList.add("iframe-show");
-    // iframe.classList.add("main-container-show");
-
-    // iframe.classList.toggle("iframe-show");
   }
-
-  // const newStatus = scaleStatus == 1 ? 1 : window.getComputedStyle(iframe).getPropertyValue('scale');
-
-
-  // if (scaleStatus == 1) {
   mainContainer.classList.remove("iframe-show");
-  // iframe.classList.remove("main-container-show");
-  // }
+
   const toggle = document.getElementById("toggle-widget");
   toggle.classList.remove("toggle-hide");
-  // iframe.style.height = "60px";
-  // iframe.style.width = "60px";
-  // iframe.style.maxHeight = "60px";
   OPEN = false;
   iframe.classList.remove("iframe-show")
 }
 
+// shows (opens) Links dialog on the Chat page.
 const showDialog = () => {
   const chatContent = document.getElementById("chat-content-container");
   const dialog = document.getElementById("sources-dialog");
@@ -448,6 +441,7 @@ const showDialog = () => {
   dialog.showModal();
 }
 
+// hides (closes) Links dialog on the Chat page.
 const closeDialog = () => {
   const chatContent = document.getElementById("chat-content-container");
   const dialog = document.getElementById("sources-dialog");
@@ -455,22 +449,25 @@ const closeDialog = () => {
   dialog.close();
 }
 
+/* these functions are called when the buttons that navigate to them are
+   clicked on.
+*/
 const showChat = () => {
-  //   console.log("show chat");
   state = "chat";
   showContent("chat");
 };
-
 const showConsult = () => {
   state = "consult";
   showContent("consult");
 };
-
 const showMessage = () => {
   state = "message";
   showContent("message");
 };
 
+/* Calendar function
+   gets the number of empty days to add to the beginning of a given month.
+*/
 const getNulls = () => {
   const month = DATE.getMonth();
   const year = DATE.getFullYear();
@@ -478,17 +475,31 @@ const getNulls = () => {
   return day + 1;
 };
 
+/* Calendar function
+   gets the number of days of a given month.
+*/
 const getDays = () => {
   const month = DATE.getMonth();
   const year = DATE.getFullYear();
   return new Date(year, month, 0).getDate();
 };
 
+/* Calendar function
+   assembles the Calendar.
+   first, getNulls and getDays are called to assemble the start of the
+   Calendar array.
+   second, zeros are added to the end of the Calendar array depending on
+   how many days are left out of 42 (7 days * 6 maximum weeks).
+   third, there is a check to see if the first Calendar row (the first 7
+   digits of the Calendar array) are 0. If this is the case, the first
+   Calendar row is hidden.
+   last, the Calendar is assembled by adding days to their corresponding
+   rows.
+*/
 const assembleDays = () => {
   const days = [];
   const zeros = getNulls();
   const daysInMonth = getDays();
-  //   console.log(zeros, daysInMonth);
   for (let zStart = 0; zStart < zeros; zStart++) {
     days.push(0);
   }
@@ -499,17 +510,12 @@ const assembleDays = () => {
   for (let zEnd = 0; zEnd < trailingZeros; zEnd++) {
     days.push(0);
   }
-  //   return days;
 
   const weeks = [];
-
-  const day = DATE.getDate();
-  // console.log(day);
 
   const firstWeek = days.slice(0, 7);
   const checkFirstWeek = firstWeek => firstWeek.every(el => el === 0);
   const emptyFirstWeek = checkFirstWeek(firstWeek);
-  // console.log(emptyFirstWeek)
   const firstWeekEl = document.getElementById("calendar-row-1");
   firstWeekEl.style.display = emptyFirstWeek ? "none" : "flex";
 
@@ -517,7 +523,6 @@ const assembleDays = () => {
     const week = [];
     const weekEl = document.getElementById(`calendar-row-${cols + 1}`);
     weekEl.innerHTML = '';
-    // console.log(weekEl);
     for (let rows = 0; rows < 7; rows++) {
       week.push(days[cols * 7 + rows]);
       if (days[cols * 7 + rows] !== 0) {
@@ -535,12 +540,11 @@ const assembleDays = () => {
     }
     weeks.push(week);
   }
-
-  //   console.log(weeks)
 };
 
-// console.log(assembleDays());
-
+/* shows the available times for a given day.
+   utilizes times as the source data from which to render available times.
+*/
 const showTimes = () => {
   const timesDisplay = document.getElementById("meeting-times");
   timesDisplay.innerHTML = '';
@@ -552,6 +556,11 @@ const showTimes = () => {
   }
 };
 
+/* renders the selected day and appends it to the HTML.
+   it is called when the Calendar page is entered as well as every time 
+   the month is changed in order to display the correct day (day name, 
+   month, day number, year).
+*/
 const renderDay = () => {
   const eventDisplay = document.getElementById("meeting-date-text");
   const month = DATE.toLocaleString("default", { month: "long" });
@@ -560,26 +569,40 @@ const renderDay = () => {
   eventDisplay.innerHTML = `${day}, ${month} ${DAY}, ${year}`;
 }
 
+/* sets the correct month and year for the Calendar controls, which is
+   based on which month/year is actively being displayed.
+   it is called when the Calendar page is entered as well as every time 
+   the month is changed in order to display the correct date.
+   last, renderDay is called to ensure that the correct date is displayed
+   in other areas of the interface.
+*/
 const setCalendar = () => {
   const dateDisplay = document.getElementById("calendar-date-display");
   const month = DATE.toLocaleString("default", { month: "long" });
   const year = DATE.getFullYear();
-  const day = DATE.toLocaleDateString("default", { weekday: "long" });
-  // const date = DATE.getDate();
   dateDisplay.innerHTML = `${month} ${year}`;
   renderDay();
 }
 
+/* sets the day state to reflect the selected day.
+   when it is called, the following functions are called with the following
+   purposes:
+   - assembleDays: re-render the days so that proper styling can be applied
+     to the selected day.
+   - showTimes: re-render the times so that the ones which apply to the
+     newly-selected day are shown.
+   - renderDay: re-render the element which displays the selected day for
+     which times are shown.
+*/
 const setDay = (day) => {
-  // console.log("running")
   DAY = day;
   assembleDays();
   showTimes();
   renderDay();
 }
 
+// renders all the Calendar elements when the Calendar page is entered.
 const goToCalendar = () => {
-  //   console.log("show chat");
   state = "calendar";
   showContent("calendar");
   setCalendar();
@@ -587,12 +610,8 @@ const goToCalendar = () => {
   showTimes();
 };
 
+// navigates 1 month backwards and re-renders elements as needed.
 const dateBack = () => {
-  // const currMonth = date.getMonth();
-  // const prevMonth = currMonth === 0 ? 11 : currMonth - 1;
-  // const newDate = date.setMonth(date.getMonth() - 1);
-  // return newDate;
-  // DATE = newDate;
   DATE.setMonth(DATE.getMonth() - 1);
   setCalendar();
   assembleDays();
@@ -600,18 +619,16 @@ const dateBack = () => {
 
 }
 
+// navigates 1 month forwards and re-renders elements as needed.
 const dateForward = () => {
-  // const newDate = date.setMonth(date.getMonth() + 1);
-  // return newDate;
-  // DATE = newDate;
   DATE.setMonth(DATE.getMonth() + 1);
   setCalendar();
   assembleDays();
   showTimes();
 }
 
+// navigates back to the Menu page and shows its content.
 const backToMenu = () => {
-  // console.log("show chat");
   state = "menu";
   showContent("menu");
 };

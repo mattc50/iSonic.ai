@@ -1,33 +1,28 @@
-// let iframeOpen = false;
+// gets the iframe element
 const iframe = document.getElementById("iframe")
-console.log(iframe)
-const tryButton = document.getElementById("try-button");
-// console.log(iframe.contentWindow.document.body)
 
+// gets the button which triggers the widget opening from the main page.
+const tryButton = document.getElementById("try-button");
+
+/* eventually assigned to the toggle-widget element inside the iframe, but
+   is initialized as nothing in order to prevent a value from being
+   assigned before the iframe content is loaded.
+*/
 let toggleButton;
 
+/* simulates a click on the toggle-widget elemeht (toggleButton) when
+   clicked, which opens the widget.
+*/
 const openIframe = () => {
-  // iframe.style.scale = 1;
-
-  // iframe.classList.toggle("iframe-show");
-  // iframeOpen = true;
   toggleButton.click();
 }
 
-const closeIframe = () => {
-  // iframe.style.scale = 0;
-
-  // iframe.classList.toggle("iframe-show");
-  // iframeOpen = false;
-}
-
+/* waits for iframe content to load before assigning variables and element
+   properties to those iframe contents.
+   this is to prevent load-race conditions where assignments are made
+   before the content is actually rendered.
+*/
 iframe.onload = () => {
   toggleButton = iframe.contentWindow.document.getElementById("toggle-widget");
   tryButton.onclick = openIframe;
 }
-// const toggleButton = document.getElementById("toggle-button");
-
-// const style = window.getComputedStyle(iframe)
-// const scaleStatus = style.getPropertyValue('scale');
-
-// toggleButton.onclick = scaleStatus == 1 ? closeIframe : openIframe;

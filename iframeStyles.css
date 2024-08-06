@@ -35,15 +35,8 @@ html {
 
 body {
   margin: 0;
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  pointer-events: none; */
   height: 100%;
   width: 100%;
-  /* max-height: 784px; */
-  /* width: 390px; */
-
 }
 
 * {
@@ -55,14 +48,7 @@ p {
   font-size: 0.875rem;
   line-height: var(--line-height-14px);
   color: var(--p-text-color);
-  /* opacity: 0.8; */
 }
-
-/* .widget-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-} */
 
 .pointer-event-container {
   display: flex;
@@ -80,10 +66,7 @@ p {
 .toggle-widget {
   appearance: none;
   border: none;
-  /* border: var(--widget-border); */
   background: var(--widget-bg);
-  /* box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.25); */
-  /* backdrop-filter: blur(60px); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,32 +88,17 @@ p {
   visibility: hidden;
 }
 
-/* z-index: 1000; */
-/* width: 390px;
-height: calc(100% - 84px);
-max-height: 784px; */
-/* position: absolute;
-  bottom: 24px;
-  right: 24px; */
-
 .main-container {
   display: flex;
   height: 100%;
   border-radius: 24px;
-  /* border: var(--widget-border); */
   background: var(--widget-bg);
-  /* box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.25); */
-  /* backdrop-filter: blur(60px);
-  -webkit-backdrop-filter: blur(60px); */
 
-  /* transform-origin: right bottom; */
   pointer-events: auto;
   transform-origin: calc(100% - 30px) calc(100% - 30px);
   scale: 0;
   transition: 0.2s;
   visibility: hidden;
-  /* margin-bottom: -60px; */
-
 }
 
 .iframe-show {
@@ -153,7 +121,6 @@ max-height: 784px; */
   border: none;
   background: transparent;
   padding: 8px;
-  /* margin-top: -8px; */
 }
 
 .icon-button * {
@@ -174,10 +141,8 @@ max-height: 784px; */
 }
 
 .widget-header {
-  /* padding-top: 18px; */
   overflow: hidden;
   height: 64px;
-  /* padding-inline: 16px; */
   padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
@@ -205,8 +170,6 @@ max-height: 784px; */
   flex-direction: column;
   flex: 1;
   padding: 16px 16px 16px 18px;
-  /* padding-inline: 16px; */
-  /* padding-bottom: 16px; */
 }
 
 .widget-header-title {
@@ -323,13 +286,12 @@ max-height: 784px; */
   align-items: center;
   margin-inline: -8px;
   overflow: hidden;
-  /* width: 32px; */
 }
 
 ::placeholder {
+  /* Firefox */
   color: var(--input-placeholder-color);
   opacity: 1;
-  /* Firefox */
 }
 
 ::-ms-input-placeholder {
@@ -360,17 +322,13 @@ max-height: 784px; */
   border: none;
   box-sizing: border-box;
   resize: none;
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 .chat-input:focus-visible {
   outline: none;
 }
 
-.chat-input-container:focus-within
-
-/* .chat-input:focus-visible  */
-  {
+.chat-input-container:focus-within {
   outline: 1px solid var(--input-focus);
   outline-offset: -1px;
 }
@@ -380,33 +338,8 @@ max-height: 784px; */
   width: 40px;
   height: 40px;
   padding: 0;
-  /* background-color: white; */
   border-radius: 50%;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  mask-image: url(#query-submit-mask);
-  mask-size: cover;
-  mask-repeat: no-repeat;
-  mask-position: center; */
 }
-
-.query-submit svg {
-  /* display: none; */
-
-  /* position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden; */
-
-  /* width: 100%;
-  height: 100%;
-  background: inherit; */
-}
-
-/* dialog:modal {
-  max-width: 100%;
-} */
 
 dialog {
   transition:
@@ -440,46 +373,26 @@ dialog {
   }
 }
 
-.sources-dialog {
-  /* color: white; */
-  /* border-top-left-radius: 16px;
-  border-top-right-radius: 16px; */
-  /* height: calc(100% - 48px); */
-  /* margin-top: 24px; */
-  /* margin-inline: 0; */
-  /* padding: 16px; */
-  /* margin-bottom: 0; */
-  /* width: 100%; */
-  /* backdrop-filter: blur(20px); */
-  /* -webkit-backdrop-filter: blur(20px); */
-}
-
 .sources-dialog:modal {
   background: var(--modal-bg);
   border: none;
   margin: 0;
   height: 100%;
-  /* width: calc(100% - 32px); */
   width: 100%;
   max-height: 100%;
   max-width: 100%;
   padding: 0;
-  /* width: calc(100% - 32px); */
 }
 
 .modal-content {
-  /* box-sizing: border-box; */
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  /* border-radius: 16px 24px; */
   background: var(--modal-content-bg);
   padding-top: 8px;
   padding-inline: 16px;
   padding-bottom: 16px;
   margin-top: 16px;
   width: 100%;
-  /* width: calc(100% - 32px); */
-  /* height: 100%; */
   height: calc(100% - 16px);
   color: var(--main-text-color);
   display: flex;
@@ -532,8 +445,6 @@ dialog {
   width: 100%;
   border: none;
   box-sizing: border-box;
-
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 .widget-multiline {
@@ -571,23 +482,16 @@ dialog {
   padding: 8px 8px 8px 0;
   margin-left: -4px;
   margin-top: -16px;
-  /* margin-bottom: 8px; */
   color: var(--p-text-color);
 }
 
-/* .back-step-button * {
-  color: white;
-} */
 .calendar-content {
   display: flex;
   flex-direction: column;
   gap: 8px;
   flex: 1;
   overflow-y: scroll;
-  /* margin-top: -16px; */
-  /* padding-top: 16px; */
 }
-
 
 .calendar-controls {
   display: flex;
@@ -716,13 +620,7 @@ button.calendar-day.selected {
 }
 
 @media screen and (max-width: 500px) {
-  /* .toggle-widget {
-    bottom: 24px;
-    right: 24px;
-  } */
-
   .iframe-show {
-    /* border: none; */
     border-radius: 0;
     width: 100%;
     max-height: none;
