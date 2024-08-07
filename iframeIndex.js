@@ -50,7 +50,7 @@ const toggleHTML = (open) => `
 
 // code for menu (initial page) of widget
 const menuHTML = `
-  <div class="menu-content-container">
+  <div class="menu-content-container" id="menu-content-container">
     <div class="widget-header">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
             <g opacity="0.9">
@@ -200,7 +200,7 @@ const chatHTML = `
 
 // code for Name & Email entry page of Consult flow
 const consultHTML = `
-  <div class="consult-content-container">
+  <div class="consult-content-container" id="consult-content-container">
     <div class="widget-header">
         <button class="icon-button" onclick="backToMenu()">
         <span class="icon material-icons">
@@ -236,7 +236,7 @@ const consultHTML = `
 
 // code for Calendar page of Consult flow
 const calendarHTML = `
-  <div class="calendar-content-container">
+  <div class="calendar-content-container" id="calendar-content-container">
     <div class="widget-header">
       <button class="icon-button" onclick="backToMenu()">
           <span class="icon material-icons">
@@ -317,7 +317,7 @@ const calendarHTML = `
 
 // code for Message page of widget
 const messageHTML = `
-  <div class="message-content-container">
+  <div class="message-content-container" id="message-content-container">
     <div class="widget-header">
         <button class="icon-button" onclick="backToMenu()">
             <span class="icon material-icons">
@@ -413,6 +413,7 @@ const openWidget = () => {
   toggle.classList.add("toggle-hide");
   OPEN = true;
   iframe.classList.add("iframe-show")
+  trapFocus(mainContainer)
 }
 
 // closes widget.
@@ -439,6 +440,8 @@ const showDialog = () => {
   const dialog = document.getElementById("sources-dialog");
   chatContent.style.display = "none";
   dialog.showModal();
+  const container = document.getElementById("sources-dialog");
+  trapFocus(container)
 }
 
 // hides (closes) Links dialog on the Chat page.
@@ -455,14 +458,23 @@ const closeDialog = () => {
 const showChat = () => {
   state = "chat";
   showContent("chat");
+  const container = document.getElementById("chat-content-container");
+  trapFocus(container)
+
 };
 const showConsult = () => {
   state = "consult";
   showContent("consult");
+  const container = document.getElementById("consult-content-container");
+  trapFocus(container)
+
 };
 const showMessage = () => {
   state = "message";
   showContent("message");
+  const container = document.getElementById("message-content-container");
+  trapFocus(container)
+
 };
 
 /* Calendar function
@@ -608,6 +620,8 @@ const goToCalendar = () => {
   setCalendar();
   assembleDays();
   showTimes();
+  const container = document.getElementById("calendar-content-container");
+  trapFocus(container)
 };
 
 // navigates 1 month backwards and re-renders elements as needed.
@@ -631,6 +645,38 @@ const dateForward = () => {
 const backToMenu = () => {
   state = "menu";
   showContent("menu");
+  const container = document.getElementById("menu-content-container");
+  trapFocus(container);
 };
+
+function trapFocus(element) {
+  // console.log(element)
+  var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+  var firstFocusableEl = focusableEls[0];
+  var lastFocusableEl = focusableEls[focusableEls.length - 1];
+  console.log(firstFocusableEl)
+  console.log(lastFocusableEl)
+  var KEYCODE_TAB = 9;
+
+  element.addEventListener('keydown', function (e) {
+    var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+    if (!isTabPressed) {
+      return;
+    }
+
+    if (e.shiftKey) /* shift + tab */ {
+      if (document.activeElement === firstFocusableEl) {
+        lastFocusableEl.focus();
+        e.preventDefault();
+      }
+    } else /* tab */ {
+      if (document.activeElement === lastFocusableEl) {
+        firstFocusableEl.focus();
+        e.preventDefault();
+      }
+    }
+  });
+}
 
 showContent(state);

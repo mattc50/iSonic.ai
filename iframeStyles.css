@@ -6,37 +6,42 @@
 
   --text-rgb: 255, 255, 255;
   /* --border-color: rgba(255, 255, 255, 0.3); */
-  --border-color: rgba(255, 255, 255, 0.5);
-  --widget-border: 1px solid var(--border-color);
+
+  /* --border-color: rgba(0, 0, 0, 0.5);
+  --widget-border: 1px solid var(--border-color); */
   --widget-border-shadow: inset 0 0 0 1px var(--border-color);
   --widget-bg-transparency: .15;
   /* --widget-bg: 255, 255, 255; */
-  --widget-bg-rgb: 0, 0, 0;
+  /* --widget-bg-rgb: 0, 0, 0; */
+
+  --widget-bg-rgb: 41, 24, 42;
   --widget-bg: rgba(var(--widget-bg-rgb), var(--widget-bg-transparency));
-  --element-bg: rgba(0, 0, 0, 0.2);
+  --element-bg: rgba(var(--widget-bg-rgb), 0.2);
   --em-element-bg: white;
   --main-text-color: rgb(var(--text-rgb));
   --p-text-color: rgba(var(--text-rgb), 0.8);
-  --em-text-color: rgb(0, 0, 0);
+  --em-text-color: rgba(var(--widget-bg-rgb), 0.9);
   --input-placeholder-color: rgba(var(--text-rgb), 0.7);
-  --modal-bg: rgba(0, 0, 0, 0);
+  --modal-bg-transparency: 0;
+  --modal-bg: rgba(0, 0, 0, var(--modal-bg-transparency));
   --modal-content-bg: var(--element-bg);
   --button-bg: var(--em-element-bg);
 
   --input-focus: var(--em-element-bg);
-
+  --font-family: Inter;
 }
 
 html {
   height: 100%;
   font-size: 16px;
-  font-family: Inter;
+  font-family: var(--font-family);
 }
 
 body {
   margin: 0;
   height: 100%;
   width: 100%;
+  background: var(--widget-bg);
 }
 
 * {
@@ -48,6 +53,16 @@ p {
   font-size: 0.875rem;
   line-height: var(--line-height-14px);
   color: var(--p-text-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible {
+  /* outline-color: none; */
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 2px var(--input-focus);
 }
 
 .pointer-event-container {
@@ -66,7 +81,9 @@ p {
 .toggle-widget {
   appearance: none;
   border: none;
-  background: var(--widget-bg);
+  /* background: var(--widget-bg); */
+  background: transparent;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,9 +95,16 @@ p {
   right: 0;
   scale: 1;
   transform-origin: center;
-  transition: 0.2s;
+  transition: 0.2s, outline 0s, outline-offset 0s;
   pointer-events: auto;
   visibility: visible;
+}
+
+.toggle-widget:focus-visible {
+  /* outline: 2px solid var(--input-focus); */
+  /* outline-offset: -1px; */
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--input-focus);
 }
 
 .toggle-hide {
@@ -92,7 +116,7 @@ p {
   display: flex;
   height: 100%;
   border-radius: 24px;
-  background: var(--widget-bg);
+  /* background: var(--widget-bg); */
 
   pointer-events: auto;
   transform-origin: calc(100% - 30px) calc(100% - 30px);
@@ -121,6 +145,7 @@ p {
   border: none;
   background: transparent;
   padding: 8px;
+  border-radius: 50%;
 }
 
 .icon-button * {
@@ -210,7 +235,7 @@ p {
   background: var(--element-bg);
   border: none;
   appearance: none;
-  font-family: Inter;
+  font-family: var(--font-family);
 }
 
 .menu-item-content {
@@ -314,7 +339,7 @@ p {
 .chat-input {
   line-height: var(--line-height-14px);
   font-size: 0.875rem;
-  font-family: Inter;
+  font-family: var(--font-family);
   color: var(--main-text-color);
   background: transparent;
   padding: 0;
@@ -339,6 +364,10 @@ p {
   height: 40px;
   padding: 0;
   border-radius: 50%;
+}
+
+.chat-input-container:has(.query-submit:focus-visible) {
+  outline: initial;
 }
 
 dialog {
@@ -440,7 +469,7 @@ dialog {
   border-radius: 8px;
   line-height: var(--line-height-14px);
   font-size: 0.875rem;
-  font-family: Inter;
+  font-family: var(--font-family);
   color: var(--main-text-color);
   width: 100%;
   border: none;
@@ -461,10 +490,11 @@ dialog {
 }
 
 .full-button {
-  font-family: Inter;
+  font-family: var(--font-family);
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 600;
+  color: var(--em-text-color);
   padding: 12px 24px;
   appearance: none;
   border: none;
@@ -546,7 +576,7 @@ button.calendar-day {
   border: none;
   background: var(--element-bg);
   border-radius: 50%;
-  font-family: Inter;
+  font-family: var(--font-family);
   font-weight: 400;
   color: var(--main-text-color);
   font-size: 0.875rem;
@@ -606,7 +636,7 @@ button.calendar-day.selected {
   appearance: none;
   border: none;
   background: rgba(0, 0, 0, 0.2);
-  font-family: Inter;
+  font-family: var(--font-family);
   font-weight: 400;
   color: var(--main-text-color);
   padding: 10px 20px;
