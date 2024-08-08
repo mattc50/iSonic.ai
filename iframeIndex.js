@@ -40,11 +40,12 @@ const iframe = parent.document.getElementById('iframe');
 const toggleHTML = (open) => `
   <button class="toggle-widget${open ? " toggle-hide" : ""}" id="toggle-widget" onclick="openWidget()">
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <g opacity="0.9">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.5364 5.41093C26.4453 6.09158 26.6295 7.37905 25.9478 8.28659L19.1595 17.3244C16.6168 20.7096 19.0358 25.5405 23.2736 25.5405H24.3021C25.4382 25.5405 26.3592 26.4602 26.3592 27.5946C26.3592 28.729 25.4382 29.6486 24.3021 29.6486H23.2736C15.6456 29.6486 11.2914 20.953 15.8682 14.8595L22.6565 5.82174C23.3381 4.9142 24.6275 4.73028 25.5364 5.41093Z" fill="white"></path>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0394 42.5891C21.1305 41.9084 20.9463 40.6209 21.628 39.7134L28.4163 30.6756C30.959 27.2904 28.5399 22.4595 24.3021 22.4595H23.2736C22.1375 22.4595 21.2165 21.5398 21.2165 20.4054C21.2165 19.271 22.1375 18.3514 23.2736 18.3514H24.3021C31.9302 18.3514 36.2844 27.047 31.7076 33.1405L24.9193 42.1783C24.2376 43.0858 22.9482 43.2697 22.0394 42.5891Z" fill="white"></path>
-            </g>
-        </svg>
+      <g opacity="0.9">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M25.5364 5.41093C26.4453 6.09158 26.6295 7.37905 25.9478 8.28659L19.1595 17.3244C16.6168 20.7096 19.0358 25.5405 23.2736 25.5405H24.3021C25.4382 25.5405 26.3592 26.4602 26.3592 27.5946C26.3592 28.729 25.4382 29.6486 24.3021 29.6486H23.2736C15.6456 29.6486 11.2914 20.953 15.8682 14.8595L22.6565 5.82174C23.3381 4.9142 24.6275 4.73028 25.5364 5.41093Z" fill="white"></path>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0394 42.5891C21.1305 41.9084 20.9463 40.6209 21.628 39.7134L28.4163 30.6756C30.959 27.2904 28.5399 22.4595 24.3021 22.4595H23.2736C22.1375 22.4595 21.2165 21.5398 21.2165 20.4054C21.2165 19.271 22.1375 18.3514 23.2736 18.3514H24.3021C31.9302 18.3514 36.2844 27.047 31.7076 33.1405L24.9193 42.1783C24.2376 43.0858 22.9482 43.2697 22.0394 42.5891Z" fill="white"></path>
+      </g>
+    </svg>
+    <!-- <img width="60" height="60" src="images/isonic_logo_colored.png" /> -->
   </button>
 `
 
@@ -52,12 +53,13 @@ const toggleHTML = (open) => `
 const menuHTML = `
   <div class="menu-content-container" id="menu-content-container">
     <div class="widget-header">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
             <g opacity="0.9">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M25.5364 5.41093C26.4453 6.09158 26.6295 7.37905 25.9478 8.28659L19.1595 17.3244C16.6168 20.7096 19.0358 25.5405 23.2736 25.5405H24.3021C25.4382 25.5405 26.3592 26.4602 26.3592 27.5946C26.3592 28.729 25.4382 29.6486 24.3021 29.6486H23.2736C15.6456 29.6486 11.2914 20.953 15.8682 14.8595L22.6565 5.82174C23.3381 4.9142 24.6275 4.73028 25.5364 5.41093Z" fill="white"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M22.0394 42.5891C21.1305 41.9084 20.9463 40.6209 21.628 39.7134L28.4163 30.6756C30.959 27.2904 28.5399 22.4595 24.3021 22.4595H23.2736C22.1375 22.4595 21.2165 21.5398 21.2165 20.4054C21.2165 19.271 22.1375 18.3514 23.2736 18.3514H24.3021C31.9302 18.3514 36.2844 27.047 31.7076 33.1405L24.9193 42.1783C24.2376 43.0858 22.9482 43.2697 22.0394 42.5891Z" fill="white"/>
             </g>
-        </svg>
+        </svg> -->
+        <img width="48" height="48" src="images/isonic_logo_colored.png" />
         <button class="icon-button" onclick="closeWidget()">
         <span class="icon material-icons">
             &#xE5CD;
@@ -125,7 +127,7 @@ const chatHTML = `
           </span>
           </button>
           <div class="widget-header-title">
-              <img src="images/isonic_logo.png">
+              <img src="images/isonic_logo_colored.png">
               <p>Chat</p>
           </div>
           <div class="button-set">
@@ -157,7 +159,7 @@ const chatHTML = `
               <div class="chat-bubble-container system">
                   <div class="chat-bubble">
                       <div class="loading-response">
-                          <dotlottie-player src="https://lottie.host/5cb8aad3-852d-449a-ac20-242b4fe99895/VplikMz57D.json" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay></dotlottie-player>
+                          <lottie-player src="https://lottie.host/a97c305c-1f5a-4365-97cf-b957ad73d2ba/kzqHqUET4M.json" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay disableShadowDOM ></lottie-player>
                       </div>
                   </div>
               </div>
@@ -170,9 +172,10 @@ const chatHTML = `
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                       <mask x="0" y="0" id="query-submit-mask" width="100%" height="100%">
                           <rect width="100%" height="100%" fill="white" />
+                          <!-- <circle cx="50%" cy="50%" r="50%" fill="white" /> -->
                           <path transform="translate(8, 7)" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" fill="black"/>
                       </mask>
-                      <circle cx="20" cy="20" r="20" fill="white" mask="url(#query-submit-mask)"
+                      <circle cx="20" cy="20" r="20" fill="white" mask="url(#query-submit-mask)" />
               </svg>
           </button>
       </div>
@@ -208,7 +211,7 @@ const consultHTML = `
         </span>
         </button>
         <div class="widget-header-title">
-            <img src="images/isonic_logo.png">
+            <img src="images/isonic_logo_colored.png">
             <p>Consult</p>
         </div>
         <button class="icon-button" onclick="closeWidget()">
@@ -244,7 +247,7 @@ const calendarHTML = `
           </span>
       </button>
       <div class="widget-header-title">
-          <img src="images/isonic_logo.png">
+          <img src="images/isonic_logo_colored.png">
           <p>Consult</p>
       </div>
       <button class="icon-button" onclick="closeWidget()">
@@ -325,7 +328,7 @@ const messageHTML = `
             </span>
         </button>
         <div class="widget-header-title">
-            <img src="images/isonic_logo.png">
+            <img src="images/isonic_logo_colored.png">
             <p>Message</p>
         </div>
         <button class="icon-button" onclick="closeWidget()">
@@ -562,7 +565,7 @@ const showTimes = () => {
   timesDisplay.innerHTML = '';
   for (let time of times) {
     const el = document.createElement("button");
-    el.className = `time-button ${time.selected && "selected"}`;
+    el.className = `time-button${time.selected ? " selected" : ""}`;
     el.innerHTML = `<span>${time.time}</span>`;
     timesDisplay.appendChild(el);
   }

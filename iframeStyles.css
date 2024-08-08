@@ -3,32 +3,54 @@
 :root {
   --line-height-14px: 1.42857142857em;
   /* 20/14 */
-
-  --text-rgb: 255, 255, 255;
-  /* --border-color: rgba(255, 255, 255, 0.3); */
+  --font-family: Inter;
 
   /* --border-color: rgba(0, 0, 0, 0.5);
   --widget-border: 1px solid var(--border-color); */
-  --widget-border-shadow: inset 0 0 0 1px var(--border-color);
-  --widget-bg-transparency: .15;
-  /* --widget-bg: 255, 255, 255; */
-  /* --widget-bg-rgb: 0, 0, 0; */
 
-  --widget-bg-rgb: 41, 24, 42;
+  --widget-border-shadow: inset 0 0 0 1px var(--border-color);
+
+  /* --widget-bg-transparency: .15; */
+  --widget-bg-transparency: 1;
+
+  /* --widget-bg-rgb: 41, 24, 42; */
+  --widget-bg-rgb: 255, 255, 255;
+
+  /* --text-rgb: 255, 255, 255; */
+  /* --text-rgb: 100, 86, 2; */
+  --text-rgb: 51, 51, 51;
+
+  /* --modal-bg-transparency: 0; */
+  --modal-bg-transparency: 0.2;
+
+  /* --element-bg: rgba(var(--widget-bg-rgb), 0.2); */
+  --element-bg: rgba(0, 0, 0, 0.04);
+
   --widget-bg: rgba(var(--widget-bg-rgb), var(--widget-bg-transparency));
-  --element-bg: rgba(var(--widget-bg-rgb), 0.2);
-  --em-element-bg: white;
-  --main-text-color: rgb(var(--text-rgb));
-  --p-text-color: rgba(var(--text-rgb), 0.8);
-  --em-text-color: rgba(var(--widget-bg-rgb), 0.9);
-  --input-placeholder-color: rgba(var(--text-rgb), 0.7);
-  --modal-bg-transparency: 0;
-  --modal-bg: rgba(0, 0, 0, var(--modal-bg-transparency));
-  --modal-content-bg: var(--element-bg);
+
+  --brand-color: rgb(251, 205, 42);
+
+  --em-element-bg: var(--brand-color);
   --button-bg: var(--em-element-bg);
 
+  --main-text-color: rgb(var(--text-rgb));
+
+  /* --em-text-color: rgba(var(--widget-bg-rgb), 0.9); */
+  --em-text-color: rgba(var(--main-text-color), 0.9);
+
+  --icon-color: var(--main-text-color);
+
+  --p-text-color: rgba(var(--text-rgb), 0.8);
+  --input-placeholder-color: rgba(var(--text-rgb), 0.7);
+
+  --modal-bg: rgba(0, 0, 0, var(--modal-bg-transparency));
+  /* --modal-content-bg: var(--element-bg); */
+  --modal-content-bg: rgb(var(--widget-bg-rgb));
+
   --input-focus: var(--em-element-bg);
-  --font-family: Inter;
+
+  /* --toggle-widget-bg: rgb(251, 205, 42); */
+  --toggle-widget-bg: rgb(51, 51, 51);
 }
 
 html {
@@ -60,9 +82,13 @@ button {
 }
 
 button:focus-visible {
-  /* outline-color: none; */
+  outline-color: var(--brand-color);
   outline-offset: -2px;
   box-shadow: inset 0 0 0 2px var(--input-focus);
+}
+
+a:focus-visible {
+  outline-color: var(--brand-color);
 }
 
 .pointer-event-container {
@@ -81,8 +107,7 @@ button:focus-visible {
 .toggle-widget {
   appearance: none;
   border: none;
-  /* background: var(--widget-bg); */
-  background: transparent;
+  background: var(--toggle-widget-bg);
 
   display: flex;
   justify-content: center;
@@ -101,10 +126,11 @@ button:focus-visible {
 }
 
 .toggle-widget:focus-visible {
-  /* outline: 2px solid var(--input-focus); */
-  /* outline-offset: -1px; */
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--input-focus);
+  outline: 2px solid var(--input-focus);
+  outline-offset: -4px;
+  /* outline: none; */
+  box-shadow: none;
+  /* box-shadow: inset 0 0 0 2px var(--input-focus); */
 }
 
 .toggle-hide {
@@ -116,7 +142,6 @@ button:focus-visible {
   display: flex;
   height: 100%;
   border-radius: 24px;
-  /* background: var(--widget-bg); */
 
   pointer-events: auto;
   transform-origin: calc(100% - 30px) calc(100% - 30px);
@@ -132,7 +157,7 @@ button:focus-visible {
 }
 
 .icon {
-  color: var(--main-text-color);
+  color: var(--icon-color);
 }
 
 .icon.small {
@@ -313,6 +338,10 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.loading-response-ellipse path {
+  fill: rgb(var(--text-rgb));
+}
+
 ::placeholder {
   /* Firefox */
   color: var(--input-placeholder-color);
@@ -354,8 +383,8 @@ button:focus-visible {
 }
 
 .chat-input-container:focus-within {
-  outline: 1px solid var(--input-focus);
-  outline-offset: -1px;
+  outline: 2px solid var(--input-focus);
+  outline-offset: -2px;
 }
 
 .query-submit {
@@ -364,6 +393,15 @@ button:focus-visible {
   height: 40px;
   padding: 0;
   border-radius: 50%;
+}
+
+.query-submit:focus-visible {
+  outline-offset: -4px;
+}
+
+.query-submit circle {
+  /* fill: var(--brand-color); */
+  fill: var(--main-text-color);
 }
 
 .chat-input-container:has(.query-submit:focus-visible) {
@@ -485,8 +523,8 @@ dialog {
 .widget-input:focus-visible,
 .widget-select:focus-visible,
 .widget-multiline:focus-visible {
-  outline: 1px solid var(--input-focus);
-  outline-offset: -1px;
+  outline: 2px solid var(--input-focus);
+  outline-offset: -2px;
 }
 
 .full-button {
@@ -500,6 +538,11 @@ dialog {
   border: none;
   background: var(--button-bg);
   border-radius: 8px;
+}
+
+.full-button:focus-visible {
+  outline-color: var(--em-text-color);
+  outline-offset: -3px;
 }
 
 .back-step-button {
@@ -635,7 +678,7 @@ button.calendar-day.selected {
   line-height: var(--line-height-14px);
   appearance: none;
   border: none;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--element-bg);
   font-family: var(--font-family);
   font-weight: 400;
   color: var(--main-text-color);
