@@ -79,6 +79,7 @@ p {
 
 button {
   cursor: pointer;
+  font-family: var(--font-family);
 }
 
 button:focus-visible {
@@ -260,7 +261,6 @@ a:focus-visible {
   background: var(--element-bg);
   border: none;
   appearance: none;
-  font-family: var(--font-family);
 }
 
 .menu-item-content {
@@ -274,6 +274,10 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.menu-item-header .icon {
+  color: var(--brand-color);
 }
 
 .menu-item-title {
@@ -301,6 +305,10 @@ a:focus-visible {
 
 .chat-bubble-container.system {
   justify-content: flex-start;
+}
+
+.chat-bubble-container.user {
+  justify-content: flex-end;
 }
 
 .chat-bubble {
@@ -406,6 +414,34 @@ a:focus-visible {
 
 .chat-input-container:has(.query-submit:focus-visible) {
   outline: initial;
+}
+
+.sources-button {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  appearance: none;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  line-height: var(--line-height-14px);
+}
+
+.source-indices {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.source-index {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background: var(--em-element-bg);
+  color: var(--em-text-color);
+  font-weight: 500;
+  border-radius: 50%;
+  margin-right: 2px;
 }
 
 dialog {
@@ -528,7 +564,6 @@ dialog {
 }
 
 .full-button {
-  font-family: var(--font-family);
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 600;
@@ -619,7 +654,6 @@ button.calendar-day {
   border: none;
   background: var(--element-bg);
   border-radius: 50%;
-  font-family: var(--font-family);
   font-weight: 400;
   color: var(--main-text-color);
   font-size: 0.875rem;
@@ -679,7 +713,6 @@ button.calendar-day.selected {
   appearance: none;
   border: none;
   background: var(--element-bg);
-  font-family: var(--font-family);
   font-weight: 400;
   color: var(--main-text-color);
   padding: 10px 20px;

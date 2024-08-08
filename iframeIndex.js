@@ -158,6 +158,23 @@ const chatHTML = `
               </div>
               <div class="chat-bubble-container system">
                   <div class="chat-bubble">
+                      <p>Sure, here is an answer.</p>
+                      <button class="sources-button">
+                        <div class="source-indices">
+                        <span class="source-index">1</span>
+                        <span class="source-index">2</span>
+                        </div>
+                        Show Sources
+                      </button>
+                  </div>
+              </div>
+              <div class="chat-bubble-container user">
+                  <div class="chat-bubble">
+                      <p>Tell me more!</p>
+                  </div>
+              </div>
+              <div class="chat-bubble-container system">
+                  <div class="chat-bubble">
                       <div class="loading-response">
                           <lottie-player src="https://lottie.host/a97c305c-1f5a-4365-97cf-b957ad73d2ba/kzqHqUET4M.json" background="transparent" speed="1" style="width: 40px; height: 40px;" loop autoplay disableShadowDOM ></lottie-player>
                       </div>
@@ -653,12 +670,9 @@ const backToMenu = () => {
 };
 
 function trapFocus(element) {
-  // console.log(element)
   var focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
   var firstFocusableEl = focusableEls[0];
   var lastFocusableEl = focusableEls[focusableEls.length - 1];
-  console.log(firstFocusableEl)
-  console.log(lastFocusableEl)
   var KEYCODE_TAB = 9;
 
   element.addEventListener('keydown', function (e) {
