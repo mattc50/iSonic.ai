@@ -423,6 +423,7 @@ const showContent = (page) => {
 
 const handleChatFocus = () => {
   const chatContainer = document.getElementById("chat-content-container");
+  console.log(parent.visualViewport.height);
   chatContainer.style.height = parent.visualViewport.height;
 }
 
