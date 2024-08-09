@@ -422,8 +422,8 @@ const showContent = (page) => {
 };
 
 body.addEventListener('touchmove', function (e) {
-  e.preventDefault();
-}, false);
+  e.stopPropagation();
+});
 
 const handleChatFocus = (e) => {
   // const chatContainer = document.getElementById("chat-content-container");
