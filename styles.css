@@ -38,7 +38,7 @@ body {
   background: radial-gradient(96.97% 100% at 50% 0%, #FFF 0%, #FFF 50%, #FFF1D6 100%);
   /* overflow: hidden; */
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
 }
 
@@ -268,7 +268,7 @@ button {
 
   .iframe-show {
     border: none;
-    height: 100lvh;
+    height: 100dvh;
     width: 100%;
     bottom: 0;
     right: 0;
