@@ -421,10 +421,15 @@ const showContent = (page) => {
   }
 };
 
-const handleChatFocus = () => {
+body.getElementById().addEventListener('touchmove', function (e) {
+  e.preventDefault();
+}, false);
+
+const handleChatFocus = (e) => {
   // const chatContainer = document.getElementById("chat-content-container");
   // console.log(parent.visualViewport.height);
   // chatContainer.style.height = parent.visualViewport.height;
+  e.preventDefault();
   const chatThread = document.getElementById("chat-thread-container");
   chatThread.style = "margin-bottom: 116px;"
   const chatInput = document.getElementById("chat-input-container");
