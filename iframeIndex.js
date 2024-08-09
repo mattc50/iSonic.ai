@@ -183,7 +183,7 @@ const chatHTML = `
           </div>
       </div>
 
-      <div class="chat-input-container">
+      <div class="chat-input-container" id="chat-input-container">
           <textarea placeholder="Write a message..." rows="4" class="chat-input" id="chat-input" onfocus="handleChatFocus()" onblur="handleChatBlur()"></textarea>
           <button class="icon-button query-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -422,14 +422,19 @@ const showContent = (page) => {
 };
 
 const handleChatFocus = () => {
-  const chatContainer = document.getElementById("chat-content-container");
-  console.log(parent.visualViewport.height);
-  chatContainer.style.height = parent.visualViewport.height;
+  // const chatContainer = document.getElementById("chat-content-container");
+  // console.log(parent.visualViewport.height);
+  // chatContainer.style.height = parent.visualViewport.height;
+  const chatInput = document.getElementById("chat-input-container");
+  chatInput.style =
+    "background-color: white; paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
 }
 
 const handleChatBlur = () => {
-  const chatContainer = document.getElementById("chat-content-container");
-  chatContainer.style.height = "";
+  // const chatContainer = document.getElementById("chat-content-container");
+  // chatContainer.style.height = "";
+  const chatInput = document.getElementById("chat-input-container");
+  chatInput.style = ""
 }
 
 /* opens widget.
