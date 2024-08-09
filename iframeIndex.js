@@ -421,7 +421,11 @@ const showContent = (page) => {
   }
 };
 
-body.addEventListener('touchmove', function (e) {
+iframe.addEventListener('touchstart', function (e) {
+  e.stopPropagation();
+});
+
+iframe.addEventListener('touchmove', function (e) {
   e.stopPropagation();
 });
 
