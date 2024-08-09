@@ -49,7 +49,7 @@ button {
 .iframe {
   box-sizing: content-box;
   z-index: 2147483000;
-  position: absolute;
+  position: fixed;
   bottom: 24px;
   right: 24px;
   height: 60px;
