@@ -184,7 +184,7 @@ const chatHTML = `
       </div>
 
       <div class="chat-input-container" id="chat-input-container">
-          <textarea placeholder="Write a message..." rows="4" class="chat-input" id="chat-input" onfocus="handleChatFocus()" onblur="handleChatBlur()"></textarea>
+          <textarea placeholder="Write a message..." rows="4" class="chat-input" id="chat-input"></textarea>
           <button class="icon-button query-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                       <mask x="0" y="0" id="query-submit-mask" width="100%" height="100%">
@@ -429,25 +429,25 @@ iframe.addEventListener('touchmove', function (e) {
   e.stopPropagation();
 });
 
-const handleChatFocus = () => {
-  // const chatContainer = document.getElementById("chat-content-container");
-  // console.log(parent.visualViewport.height);
-  // chatContainer.style.height = parent.visualViewport.height;
-  // e.preventDefault();
-  const chatThread = document.getElementById("chat-thread-container");
-  chatThread.style = "margin-bottom: 116px;"
-  const chatInput = document.getElementById("chat-input-container");
-  chatInput.style = "paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
-}
+// const handleChatFocus = () => {
+//   // const chatContainer = document.getElementById("chat-content-container");
+//   // console.log(parent.visualViewport.height);
+//   // chatContainer.style.height = parent.visualViewport.height;
+//   // e.preventDefault();
+//   const chatThread = document.getElementById("chat-thread-container");
+//   chatThread.style = "margin-bottom: 116px;"
+//   const chatInput = document.getElementById("chat-input-container");
+//   chatInput.style = "paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
+// }
 
-const handleChatBlur = () => {
-  // const chatContainer = document.getElementById("chat-content-container");
-  // chatContainer.style.height = "";
-  const chatThread = document.getElementById("chat-thread-container");
-  chatThread.style = ""
-  const chatInput = document.getElementById("chat-input-container");
-  chatInput.style = ""
-}
+// const handleChatBlur = () => {
+//   // const chatContainer = document.getElementById("chat-content-container");
+//   // chatContainer.style.height = "";
+//   const chatThread = document.getElementById("chat-thread-container");
+//   chatThread.style = ""
+//   const chatInput = document.getElementById("chat-input-container");
+//   chatInput.style = ""
+// }
 
 /* opens widget.
    style classes are checked and added/removed if needed to ensure that if
