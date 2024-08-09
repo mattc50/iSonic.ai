@@ -184,7 +184,7 @@ const chatHTML = `
       </div>
 
       <div class="chat-input-container">
-          <textarea placeholder="Write a message..." rows="4" class="chat-input" id="chat-input" onfocus="handleChatFocus()"></textarea>
+          <textarea placeholder="Write a message..." rows="4" class="chat-input" id="chat-input" onfocus="handleChatFocus()" onblur="handleChatBlur()"></textarea>
           <button class="icon-button query-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                       <mask x="0" y="0" id="query-submit-mask" width="100%" height="100%">
@@ -426,7 +426,7 @@ const handleChatFocus = () => {
   chatContainer.style.height = parent.visualViewport.height;
 }
 
-const handleChatBlurr = () => {
+const handleChatBlur = () => {
   const chatContainer = document.getElementById("chat-content-container");
   chatContainer.style.height = "";
 }
