@@ -421,7 +421,7 @@ const showContent = (page) => {
   }
 };
 
-body.getElementById().addEventListener('touchmove', function (e) {
+body.addEventListener('touchmove', function (e) {
   e.preventDefault();
 }, false);
 
