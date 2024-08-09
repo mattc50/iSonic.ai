@@ -375,7 +375,7 @@ a:focus-visible {
 
 .chat-input {
   line-height: var(--line-height-14px);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-family: var(--font-family);
   color: var(--main-text-color);
   background: transparent;
@@ -542,7 +542,7 @@ dialog {
   box-shadow: var(--widget-border-shadow);
   border-radius: 8px;
   line-height: var(--line-height-14px);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-family: var(--font-family);
   color: var(--main-text-color);
   width: 100%;

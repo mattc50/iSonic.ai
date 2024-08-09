@@ -184,7 +184,7 @@ const chatHTML = `
       </div>
 
       <div class="chat-input-container">
-          <textarea placeholder="Write a message..." rows="4" class="chat-input"></textarea>
+          <textarea placeholder="Write a message..." rows="4" class="chat-input" onfocus="handleChatFocus()"></textarea>
           <button class="icon-button query-submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                       <mask x="0" y="0" id="query-submit-mask" width="100%" height="100%">
@@ -420,6 +420,10 @@ const showContent = (page) => {
     `
   }
 };
+
+// handleChatFocus = () => {
+
+// }
 
 /* opens widget.
    style classes are checked and added/removed if needed to ensure that if
