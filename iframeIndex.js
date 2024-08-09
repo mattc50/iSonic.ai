@@ -144,7 +144,7 @@ const chatHTML = `
           </div>
       </div>
 
-      <div class="chat-thread-container">
+      <div class="chat-thread-container" id="chat-thread-container">
           <div class="chat-thread">
               <div class="chat-bubble-container system">
                   <div class="chat-bubble">
@@ -425,6 +425,8 @@ const handleChatFocus = () => {
   // const chatContainer = document.getElementById("chat-content-container");
   // console.log(parent.visualViewport.height);
   // chatContainer.style.height = parent.visualViewport.height;
+  const chatThread = document.getElementById("chat-thread-container");
+  chatThread.style = "margin-bottom: 116px;"
   const chatInput = document.getElementById("chat-input-container");
   chatInput.style =
     "background-color: white; paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
@@ -433,6 +435,8 @@ const handleChatFocus = () => {
 const handleChatBlur = () => {
   // const chatContainer = document.getElementById("chat-content-container");
   // chatContainer.style.height = "";
+  const chatThread = document.getElementById("chat-thread-container");
+  chatThread.style = ""
   const chatInput = document.getElementById("chat-input-container");
   chatInput.style = ""
 }

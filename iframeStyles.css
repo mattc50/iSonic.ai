@@ -29,6 +29,7 @@
   --widget-bg: rgba(var(--widget-bg-rgb), var(--widget-bg-transparency));
 
   --brand-color: rgb(251, 205, 42);
+  --brand-color: rgb(249, 186, 27);
 
   --em-element-bg: var(--brand-color);
   --button-bg: var(--em-element-bg);
@@ -194,6 +195,7 @@ a:focus-visible {
 .widget-header {
   overflow: hidden;
   height: 64px;
+  flex-shrink: 0;
   padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
