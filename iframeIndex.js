@@ -429,11 +429,11 @@ iframe.addEventListener('touchmove', function (e) {
   e.stopPropagation();
 });
 
-const handleChatFocus = (e) => {
+const handleChatFocus = () => {
   // const chatContainer = document.getElementById("chat-content-container");
   // console.log(parent.visualViewport.height);
   // chatContainer.style.height = parent.visualViewport.height;
-  e.preventDefault();
+  // e.preventDefault();
   const chatThread = document.getElementById("chat-thread-container");
   chatThread.style = "margin-bottom: 116px;"
   const chatInput = document.getElementById("chat-input-container");
