@@ -437,8 +437,7 @@ const handleChatFocus = (e) => {
   const chatThread = document.getElementById("chat-thread-container");
   chatThread.style = "margin-bottom: 116px;"
   const chatInput = document.getElementById("chat-input-container");
-  chatInput.style =
-    "background-color: white; paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
+  chatInput.style = "paddingTop: 16px; position: fixed; bottom: 16px; width: calc(100% - 32px)";
 }
 
 const handleChatBlur = () => {
