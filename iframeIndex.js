@@ -464,6 +464,7 @@ const openWidget = () => {
   OPEN = true;
   iframe.classList.add("iframe-show")
   trapFocus(mainContainer);
+  console.log(html);
   html.classList.add("iframe-mobile");
 }
 

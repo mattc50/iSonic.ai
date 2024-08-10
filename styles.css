@@ -276,7 +276,7 @@ button {
     max-height: none;
   }
 
-  html.iframe-mobile {
+  html:has(.iframe-show) {
     overflow: hidden;
   }
 }
