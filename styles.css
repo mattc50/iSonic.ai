@@ -275,4 +275,8 @@ button {
     border-radius: 0;
     max-height: none;
   }
+
+  body .iframe-show {
+    overflow: hidden;
+  }
 }
