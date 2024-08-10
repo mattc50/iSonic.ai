@@ -31,6 +31,8 @@ const body = document.body;
 // gets iframe element from parent document
 const iframe = parent.document.getElementById('iframe');
 
+// gets html element from parent document
+const html = document.documentElement;
 
 
 /* code for toggle button (when widget is closed)
@@ -461,7 +463,8 @@ const openWidget = () => {
   toggle.classList.add("toggle-hide");
   OPEN = true;
   iframe.classList.add("iframe-show")
-  trapFocus(mainContainer)
+  trapFocus(mainContainer);
+  html.classList.add("iframe-mobile");
 }
 
 // closes widget.
@@ -480,6 +483,7 @@ const closeWidget = () => {
   toggle.classList.remove("toggle-hide");
   OPEN = false;
   iframe.classList.remove("iframe-show")
+  html.classList.remove("iframe-mobile");
 }
 
 // shows (opens) Links dialog on the Chat page.
