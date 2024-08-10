@@ -276,7 +276,7 @@ button {
     max-height: none;
   }
 
-  body .iframe-show {
+  html .iframe-show {
     overflow: hidden;
   }
 }
